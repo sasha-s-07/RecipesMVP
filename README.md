@@ -4,12 +4,12 @@ Purpose:
 
 I have created a virtual recipe book for those of us who enjoy cooking different recipes that are found on the internet from a variety of cuisines. 
 
-How many times have you found a great recipe link, but forgotten to store it somewhere? How many times have you felt like cooking something for dinner
+How many times have you found a great recipe link, but forgotten to store it somewhere for future reference? How many times have you felt like cooking something for dinner
 but you can't figure out what to make because the possibilities are endless? I hope that this virtual recipe book can help to solve these problems.
 
 Further improvements: 
 
-- To improve the user experience I would work on the "Surprise Me" feature so that there is only one button which takes you to the details for a new recipe each time. I would need to add new methods on my controllers in order to acheive this.
+- To improve the user experience I would work on the "Surprise Me" extra feature so that there is only one button which takes you to the details for a new recipe each time. I would need to add new methods on my controllers in order to acheive this.
 - Add a search bar so that you can quickly find a particular recipe that you're looking for. In order to acheive this, I would have to make modifications to my controllers as well as my views. 
 
 Resources:

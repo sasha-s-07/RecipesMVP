@@ -67,7 +67,7 @@ namespace RecipesMVP.Controllers
 
             return Ok(recipe.RecipeID);
         }
-        // PUT: api/Recipe/5
+       /* // PUT: api/Recipe/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRecipe(int id, Recipe recipe)
         {
@@ -100,7 +100,7 @@ namespace RecipesMVP.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
+        }*/
         /// <summary>
         /// Updates a recipe in the database given information about the recipe.
         /// </summary>
@@ -145,20 +145,55 @@ namespace RecipesMVP.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        // POST: api/Recipe
-        [ResponseType(typeof(Recipe))]
-        public IHttpActionResult PostRecipe(Recipe recipe)
-        {
-            if (!ModelState.IsValid)
+        /*    // POST: api/Recipe
+            [ResponseType(typeof(Recipe))]
+            public IHttpActionResult PostRecipe(Recipe recipe)
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                db.Recipe.Add(recipe);
+                db.SaveChanges();
+
+                return CreatedAtRoute("DefaultApi", new { id = recipe.RecipeID }, recipe);
+            }*/
+
+        /// <summary>
+        /// Finds a particular Cuisine in the database given a player id with a 200 status code. If the Team is not found, return 404.
+        /// </summary>
+        /// <param name="id">The recipe id</param>
+        /// <returns>Information about the Cuisine, including cuisine id, and name</returns>
+        // <example>
+        // GET: api/TeamData/FindCuisineForRecipe/5
+        // </example>
+        /*[HttpGet]
+        [ResponseType(typeof(CuisineDto))]
+        public IHttpActionResult FindTeamForPlayer(int id)
+        {
+            //Finds the first team which has any players
+            //that match the input playerid
+            Cuisine Cuisine = db.Cuisine
+                .Where(t => t.Recipes.Any(p => p.RecipeID == id))
+                .FirstOrDefault();
+            //if not found, return 404 status code.
+            if (Cuisine == null)
+            {
+                return NotFound();
             }
 
-            db.Recipe.Add(recipe);
-            db.SaveChanges();
+            //put into a 'friendly object format'
+           CuisineDto TeamDto = new CuisineDto
+            {
+                CuisineID = Cuisine.CuisineID,
+                CuisineName = Cuisine.CuisineName,
+            };
 
-            return CreatedAtRoute("DefaultApi", new { id = recipe.RecipeID }, recipe);
-        }
+
+            //pass along data as 200 status code OK response
+            return Ok(CuisineDto);
+        }*/
 
         /// <summary>
         /// Deletes a recipe in the database
@@ -197,5 +232,11 @@ namespace RecipesMVP.Controllers
         {
             return db.Recipe.Count(e => e.RecipeID == id) > 0;
         }
+
+        //GET/api/RecipeData/randomrecipe
+        //public IQueryable<Recipe> GetRandomRecipe()
+        //{
+        //    return db.Recipe;
+        //}
     }
 }

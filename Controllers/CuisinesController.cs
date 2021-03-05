@@ -13,6 +13,10 @@ namespace RecipesMVP.Controllers
     public class CuisinesController : Controller
     {
         private RecipesDataContext db = new RecipesDataContext();
+        /// <summary>
+        /// Displays  all the cuisines and their information from the database
+        /// </summary>
+        /// <returns>A list of all Cuisines and their information</returns>
 
         // GET: Cuisines
         public ActionResult Index()
@@ -20,6 +24,11 @@ namespace RecipesMVP.Controllers
             return View(db.Cuisine.ToList());
         }
 
+        /// <summary>
+        /// Displays the cuisine name for the specified Cuisine ID
+        /// </summary>
+        /// <param name="id">takes Cuisine ID</param>
+        /// <returns>The Cuisine name</returns>
         // GET: Cuisines/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,13 +43,20 @@ namespace RecipesMVP.Controllers
             }
             return View(cuisine);
         }
-
+        /// <summary>
+        /// Creates a new cuisine and adds it to the database
+        /// </summary>
+        /// <returns>Adds new cuisine to the database</returns>
         // GET: Cuisines/Create
         public ActionResult Create()
         {
             return View();
         }
-
+        /// <summary>
+        /// Sends request to add information about new cuisine to the database 
+        /// </summary>
+        /// <param name="cuisine"></param>
+        /// <returns>adds new cuisine info to the database</returns>
         // POST: Cuisines/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,7 +73,11 @@ namespace RecipesMVP.Controllers
 
             return View(cuisine);
         }
-
+        /// <summary>
+        /// Update's information for a specific cuisine based on the Cuisine ID
+        /// </summary>
+        /// <param name="id">uses cuisine id</param>
+        /// <returns></returns>
         // GET: Cuisines/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -72,6 +92,11 @@ namespace RecipesMVP.Controllers
             }
             return View(cuisine);
         }
+        /// <summary>
+        /// Sends request to update information about the specified cuisine
+        /// </summary>
+        /// <param name="cuisine">uses cuisine id</param>
+        /// <returns>updates the edited cuisine information in the database</returns>
 
         // POST: Cuisines/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -88,6 +113,11 @@ namespace RecipesMVP.Controllers
             }
             return View(cuisine);
         }
+        /// <summary>
+        /// deletes a cuisine from the database based on the Cuisine ID
+        /// </summary>
+        /// <param name="id">uses cuisine id</param>
+        /// <returns>removes cuisine from the database</returns>
 
         // GET: Cuisines/Delete/5
         public ActionResult Delete(int? id)
@@ -103,6 +133,11 @@ namespace RecipesMVP.Controllers
             }
             return View(cuisine);
         }
+        /// <summary>
+        /// Sends request to delete a specified cuisine
+        /// </summary>
+        /// <param name="cuisine">uses cuisine id</param>
+        /// <returns>deletes the cuisine from the database</returns>
 
         // POST: Cuisines/Delete/5
         [HttpPost, ActionName("Delete")]

@@ -27,7 +27,7 @@ namespace RecipesMVP.Controllers
             return db.Cuisine;
         }
         /// <summary>
-        /// Gets cuisines in the database.
+        /// Gets a cuisine in the database.
         /// </summary>
         /// <returns>Cuisine Id, CuisineName</returns>
         /// <example>
@@ -137,41 +137,45 @@ namespace RecipesMVP.Controllers
         }
 
 
-        // PUT: api/CuisinesData/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutCuisine(int id, Cuisine cuisine)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/CuisinesData/5
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutCuisine(int id, Cuisine cuisine)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != cuisine.CuisineID)
-            {
-                return BadRequest();
-            }
+        //    if (id != cuisine.CuisineID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(cuisine).State = EntityState.Modified;
+        //    db.Entry(cuisine).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CuisineExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CuisineExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
+        /// <summary>
+        /// sends a post request to display Cuisine data 
+        /// </summary>
+        /// <param name="cuisine"></param>
+        /// <returns>Cuisines from the database</returns>
         // POST: api/CuisinesData
         [ResponseType(typeof(Cuisine))]
         public IHttpActionResult PostCuisine(Cuisine cuisine)
@@ -186,7 +190,11 @@ namespace RecipesMVP.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = cuisine.CuisineID }, cuisine);
         }
-
+        /// <summary>
+        /// Deletes a cuisine from the database based on its ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Removes cuisine from the database</returns>
         // DELETE: api/CuisinesData/5
         [ResponseType(typeof(Cuisine))]
         public IHttpActionResult DeleteCuisine(int id)

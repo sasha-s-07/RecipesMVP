@@ -4,48 +4,40 @@
     ViewBag.Title = "Index";
 }
 
-<h2>What Should I Eat?</h2>
+<h2>What Should I Cook? &#129379</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cuisine.CuisineName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecipeLink)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CookingTime)
-        </th>
-        <th></th>
-    </tr>
+<div class="details">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeLink)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CookingTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RecipeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RecipeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RecipeID })
-        </td>
-    </tr>
-}
+<div class="details">
+    <h3>Recipes</h3>
+    @foreach (var item in Model)
+    {
+        <div>
+            <a href="/Recipes/Details/@item.RecipeID">@Html.DisplayFor(modelItem => item.RecipeName)</a>
+        </div>
 
-</table>
+    }
+</div>
+
+
+<h2>Still Can't Decide? &#127836 </h2>
+<p class="details" >Use the Surprise Me feature to decide for you!</p>
+
+<div class="details">
+    @foreach (var Recipe in Model)
+    {
+
+        <button>
+            @Html.ActionLink("Surprise Me ", "Details", new { id = Recipe.RecipeID })
+        </button>
+    }
+
+</div>
+    
+
+
+

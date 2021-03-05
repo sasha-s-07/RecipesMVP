@@ -4,30 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>What Should I Eat?</h2>
+<h2>What Should I Cook? &#129379</h2>
 
-<p>
+<p class="details">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CuisineName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CuisineName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CuisineID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CuisineID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CuisineID })
-        </td>
-    </tr>
-}
+<h3 class="details">Cuisines</h3>
 
-</table>
+
+<div class="details">
+    @foreach (var item in Model)
+    {
+        <div>
+            <a href="/Cuisines/Details/@item.CuisineID">@Html.DisplayFor(modelItem => item.CuisineName)</a>
+        </div>
+
+    }
+</div>
